@@ -6,8 +6,8 @@ import axios from "axios";
 
 //通过axios实例配置请求的公共接口
 const request = axios.create({
-    baseURL:"http://mengxuegu.com:9999/pro-api",
-    timeout: 1000
+    baseURL:process.env.VUE_APP_BASE_API,
+    timeout: 5000
 })
 
 
