@@ -8,6 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
 
+
+
 console.log(process.env.NODE_ENV);
 
 Vue.config.productionTip = false;
