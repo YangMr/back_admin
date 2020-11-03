@@ -43,7 +43,8 @@ export default {
      },   
      //退出登录的方法
      logout(){
-         alert("退出登录")
+         //回到登录页面
+         this.$router.push("/login")
      }
   },
   components: {}

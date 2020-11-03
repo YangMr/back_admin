@@ -1,13 +1,12 @@
 <template>
     <div class="main">
-        <el-breadcrumb v-if="$route.path != '/home'" separator="/">
-            <el-breadcrumb-item class="line">{{$route.meta.title}}</el-breadcrumb-item>
-        </el-breadcrumb>
+        <app-link v-if="$route.path != '/home'"></app-link>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+import AppLink from "../AppLink"
 export default {
  name : "", 
  data(){
@@ -16,7 +15,7 @@ export default {
   }
  },
  components : {
-
+     AppLink
  },
 }
 </script>
@@ -26,14 +25,5 @@ export default {
     .main{
         padding : 10px;
     }
-    .el-breadcrumb{
-        background-color : #fff;
-        border-radius:4px;
-        padding : 20px;
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    }
-    .line{
-        border-left : 3px solid red;
-        padding-left:10px;
-    }
+    
 </style>
