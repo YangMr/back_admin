@@ -22,7 +22,10 @@ const routes = [
     children : [
       {
         path : "/home",
-        component : Home
+        component : Home,
+        meta : {
+          auth : true
+        }
       }
     ]
   },
@@ -78,7 +81,8 @@ const routes = [
         path : "/",
         component : Staff,
         meta : {
-          title : "员工管理"
+          title : "员工管理",
+          auth : true
         }
       }
     ]

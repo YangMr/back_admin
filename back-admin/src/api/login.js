@@ -21,3 +21,11 @@ export function getInfo(){
         url : "/user/info"
     })
 }
+
+//退出登录接口
+export function logout(){
+    return request({
+        url : "/user/logout",
+        method : "POST"
+    })
+}

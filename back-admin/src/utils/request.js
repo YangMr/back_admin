@@ -3,6 +3,9 @@
 //引入axios
 import axios from "axios";
 
+import store from "../store"
+
+import {removeUser} from "./auth"
 
 //通过axios实例配置请求的公共接口
 const request = axios.create({
@@ -15,6 +18,9 @@ const request = axios.create({
 //配置请求 拦截  ---   发送请求的触发,请求也没有
 // 添加请求拦截器
 request.interceptors.request.use(function (config) {
+    //获取token
+    const token = store.getters.token ? store.getters.token : null;
+    config.headers.token = token;
     // 在发送请求之前做些什么
     return config;
 }, function (error) {
@@ -28,6 +34,12 @@ request.interceptors.request.use(function (config) {
 // 添加响应拦截器
 request.interceptors.response.use(function (response) {
     // 对响应数据做点什么
+    if (response.data.code == 401) {
+        removeUser();
+        router.replace({
+            path: '/login' // 到登录页重新获取token
+        })
+    } 
     return response;
 }, function (error) {
     // 对响应错误做点什么

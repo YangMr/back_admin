@@ -21,6 +21,8 @@
 
 <script>
 import _ from "lodash";
+import {Prompt} from "../../utils/prompt"
+const message = new Prompt();
 import { login, getInfo } from "../../api/login";
 export default {
   name: "",
@@ -51,17 +53,13 @@ export default {
         //如果验证通过,则调用登录接口,进行登录,否在,给用户一个提示信息
         if (valid) {
           //获取登录接口的数据
-          const response = await login(this.form.username, this.form.password);
-          const res = response.data;
-          if (res.flag && res.flag == true) {
-            //获取用户信息的数据
-            const response =  await getInfo();
-            const res = response.data;
-              if (res.flag) {
-                //跳转到主页
-                this.$router.push("/");
-              }
-          }      
+          const res = await this.$store.dispatch("UserLogin",this.form);
+          //如果登录成功,跳转到首页
+          if(res.flag){
+            this.$router.push("/home");
+          }else{
+            message.PromptMessage("登录失败","error")
+          }
         } else {
           return false;
         }
@@ -69,6 +67,19 @@ export default {
     }
   }
 };
+
+
+//  const response = await login(this.form.username, this.form.password);
+//           const res = response.data;
+//           if (res.flag && res.flag == true) {
+//             //获取用户信息的数据
+//             const response =  await getInfo();
+//             const res = response.data;
+//               if (res.flag) {
+//                 //跳转到主页
+//                 this.$router.push("/");
+//               }
+//           }      
 </script>
 
 

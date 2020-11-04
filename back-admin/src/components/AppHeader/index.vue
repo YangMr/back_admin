@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import {Prompt} from "@/utils/prompt"
+const message = new Prompt();
 export default {
   name: "",
   data() {
@@ -42,9 +44,15 @@ export default {
          alert("修改密码")
      },   
      //退出登录的方法
-     logout(){
+     async logout(){
+       const res = await this.$store.dispatch("UserLogout");
+       if(res.flag){
          //回到登录页面
          this.$router.push("/login")
+       }else{
+         message.PromptMessage("登录失败","error")
+       }
+         
      }
   },
   components: {}
