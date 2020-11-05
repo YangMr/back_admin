@@ -12,7 +12,7 @@ export function setUserToken(token){
 }
 //获取用户信息
 export function getUserInfo(){
-    return localStorage.getItem(INFO_KEY)
+    return JSON.parse(localStorage.getItem(INFO_KEY))
 }
 //设置用户信息
 export function setUserInfo(info){

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="user">
+            <label>姓名</label><input v-model="user.username" type="text" >
+        </div>
+        <div class="pass">
+            <label>密码</label><input v-model="user.password" type="password" >
+        </div>
+        <div class="repass">
+            <label>确认密码</label><input v-model="user.repassword" type="password" >
+        </div>
+        <button @click="get">注册</button>
+
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    // const obj = {
+        
+    // };
+
+    // obj.name  = "jack"
+    // obj["name"] = "jack"
+
+    new Vue({
+        el : "#app",
+        data : function(){
+            return {
+                user : {
+                  
+                }
+            }
+        },
+        methods : {
+            get(){
+                console.log(this.user)
+            }
+        }
+    })
+
+    // const id = 1;
+
+    // const obj = [
+    //     { 
+    //         id : 1,
+    //         type : "现金"
+    //     },
+    //     { 
+    //         id : 2,
+    //         type : "微信"
+    //     },
+    //     { 
+    //         id : 3,
+    //         type : "支付宝"
+    //     },
+    //     { 
+    //         id : 4,
+    //         type : "银行卡"
+    //     },
+    // ];
+
+    // const data = obj.find((item,index)=>item.id == id);
+
+    // console.log(data)
+
+    // document.write(data.type)
+
+
+
+
+
+</script>

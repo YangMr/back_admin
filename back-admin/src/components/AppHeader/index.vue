@@ -10,7 +10,7 @@
     </router-link>
     <el-dropdown @command="handleCommand">
       <span class="el-dropdown-link">
-        admin <i class="el-icon-arrow-down el-icon--right"></i>
+        {{$store.getters.info.name}} <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item command="change-pass" icon="el-icon-edit">修改密码</el-dropdown-item>
