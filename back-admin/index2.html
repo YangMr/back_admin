@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div id="box" ref="test" v-if="flag">hello world</div>
+        <button @click="getText">获取box内容</button>
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el : "#app",
+        data : function(){
+            return {
+                flag : false
+            }
+        },
+        methods : {
+            getText(){
+                this.flag = true;
+                this.$nextTick(()=>{
+                    const test = this.$refs["test"];
+                    console.log(test);
+                    console.log(test.innerHTML)
+                })
+                
+                //当dom元素在浏览器渲染完毕时,在获取div元素就可以获取到, $nextTick() 当dom元素渲染完毕之后再回执行这个方法
+                // this.$nextTick(()=>{
+                    // const box = document.getElementById("box");
+                    // console.log(box)
+                    // console.log(box.innerHTML)
+                // });
+                // //让div显示  
+                // this.flag = true;
+                // //获取id为box的这个div元素
+                // const box = document.getElementById("box");
+                // //打印box
+                // console.log(box)
+                
+                // console.log(box.innerHTML)
+            }
+        }
+    })
+</script>
